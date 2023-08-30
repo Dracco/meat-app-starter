@@ -14,6 +14,11 @@ import { FormGroup, FormBuilder, Validators, AbstractControl } from '@angular/fo
 })
 export class OrderComponent implements OnInit {
 
+   isOrderCompleted(): boolean{
+    return this.orderId !== undefined
+  }
+
+
   emailPattern = /^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i
   numberPattern = /^[0-9]*$/
 
@@ -75,9 +80,12 @@ export class OrderComponent implements OnInit {
     this.orderService.remove(item)
   }
 
+  orderId: string
+
   checkOrder(order: Order){
     order.orderItems = this.cartItems().map((item: CartItem) => new OrderItem(item.quantity, item.menuItem.id))
-    this.orderService.checkOrder(order).subscribe((order: Order) => {
+    this.orderService.checkOrder(order)
+    .subscribe((order: Order) => {
       this.router.navigate(['/order-summary'])
       this.orderService.clear()
     })

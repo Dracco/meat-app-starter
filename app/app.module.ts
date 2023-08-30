@@ -21,6 +21,8 @@ import { ReviewsComponent } from "app/restaurant-detail/reviews/reviews.componen
 import { OrderSummaryComponent } from 'app/order-summary/order-summary.component';
 import { SharedModule } from "app/shared/shared.module";
 import { NotFoundComponent } from './not-found/not-found.component';
+import { LoginComponent } from './security/login/login.component';
+import { UserDetailComponent } from './header/user-detail/user-detail.component';
 //import { CoreModule } from "app/core/core.module";
 
 
@@ -38,6 +40,8 @@ import { NotFoundComponent } from './not-found/not-found.component';
     ReviewsComponent,
     OrderSummaryComponent,
     NotFoundComponent,
+    LoginComponent,
+    UserDetailComponent,
   ],
   imports: [
     BrowserModule,
